@@ -4,7 +4,37 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
 
+# Ramp stuff:
+inhibit_all_warnings!
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/passbase/zoomauthentication-cocoapods-specs.git'
+source 'https://github.com/passbase/cocoapods-specs.git'
+source 'https://github.com/passbase/microblink-cocoapods-specs.git'
+
+pre_install
+
 target 'ramppoc' do
+  # Ramp stuff
+  use_frameworks!
+  $static_framework = ['FlipperKit', 'Flipper', 'Flipper-Folly',
+     'CocoaAsyncSocket', 'ComponentKit', 'DoubleConversion',
+     'glog', 'Flipper-PeerTalk', 'Flipper-RSocket', 'Yoga', 'YogaKit',
+     'CocoaLibEvent', 'OpenSSL-Universal', 'boost-for-react-native']
+  
+  pre_install do |installer|
+    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+    installer.pod_targets.each do |pod|
+      if $static_framework.include?(pod.name)
+        def pod.build_type;
+          # Pod::Target::BuildType.static_library
+          Pod::BuildType.static_library
+        end
+      end
+    end
+  end
+  pod 'Ramp', :git => 'https://github.com/RampNetwork/ramp-sdk-ios', :tag => '2.0.0'
+
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -34,4 +64,6 @@ target 'ramppoc' do
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
+
+  
 end

@@ -74,7 +74,15 @@ PODS:
   - fmt (6.2.1)
   - glog (0.3.5)
   - libevent (2.1.12)
+  - Microblink (5.16.0)
   - OpenSSL-Universal (1.1.1100)
+  - Passbase (2.13.0):
+    - Microblink (= 5.16.0)
+  - Ramp (2.0.0):
+    - Passbase (~> 2.8)
+  - ramp-network-react-native-sdk (0.3.1):
+    - Ramp
+    - React-Core
   - RCT-Folly (2021.06.28.00-v2):
     - boost
     - DoubleConversion
@@ -380,6 +388,8 @@ DEPENDENCIES:
   - FlipperKit/SKIOSNetworkPlugin (= 0.125.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - OpenSSL-Universal (= 1.1.1100)
+  - Ramp (from `https://github.com/RampNetwork/ramp-sdk-ios`, tag `2.0.0`)
+  - "ramp-network-react-native-sdk (from `../node_modules/@ramp-network/react-native-sdk`)"
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -410,6 +420,10 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
+  https://github.com/passbase/cocoapods-specs.git:
+    - Passbase
+  https://github.com/passbase/microblink-cocoapods-specs.git:
+    - Microblink
   trunk:
     - CocoaAsyncSocket
     - Flipper
@@ -438,6 +452,11 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  Ramp:
+    :git: https://github.com/RampNetwork/ramp-sdk-ios
+    :tag: 2.0.0
+  ramp-network-react-native-sdk:
+    :path: "../node_modules/@ramp-network/react-native-sdk"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -491,6 +510,11 @@ EXTERNAL SOURCES:
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
+CHECKOUT OPTIONS:
+  Ramp:
+    :git: https://github.com/RampNetwork/ramp-sdk-ios
+    :tag: 2.0.0
+
 SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -509,7 +533,11 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 476ee3e89abb49e07f822b48323c51c57124b572
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  Microblink: 9443ff3c708a97673e4999389626079e10a1bbc1
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
+  Passbase: 751b4c214cafa1759cfb349413d92712d6361cea
+  Ramp: c522303707480a458eef7d05c96e8c9604be4840
+  ramp-network-react-native-sdk: 4f3f021d49252d34d9803bf1b4eebea905996c52
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: bab4a7c3d7eb9553b13773ee190f279712efd1fc
   RCTTypeSafety: efbeb6e450ff6cef8e19c2cb5314c6d8bfeeef77
@@ -539,6 +567,6 @@ SPEC CHECKSUMS:
   Yoga: 6671cf077f614314c22fd09ddf87d7abeee64e96
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 54cf782d3f799a4a3713ee010a81073d022da68e
+PODFILE CHECKSUM: 0f3e0d8ded8fc094b1daa6b87bbb9fc2c7e5ab24
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
