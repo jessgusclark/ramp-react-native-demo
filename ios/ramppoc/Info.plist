@@ -51,5 +51,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<!-- permission strings to be included in info.plist -->
+	<key>NSCameraUsageDescription</key>
+	<string>Please give us access to your camera, to complete the verification.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please give us access to your photo library to verify you.</string>
 </dict>
 </plist>
